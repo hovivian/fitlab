@@ -17,9 +17,9 @@ function FormsAuthSignup(props) {
       enableReinitialize
       validationSchema={
         Yup.object({
-          email: Yup.string().required().label('Title'),
+          email: Yup.string().required().label('Email'),
           username: Yup.string().required().min(1, 'Minimum 6 characters').max(15, 'Maximum 15 characters')
-            .label('Name'),
+            .label('Username'),
           password: Yup.string().min(6).required().label('Password'),
           passwordConfirmation: Yup.string().oneOf([Yup.ref('password')], 'Passwords need to match').required().label('Password Confirmation')
         })
@@ -84,7 +84,9 @@ function FormsAuthSignup(props) {
               />
             </div>
 
-            <button className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
+            <div className="d-flex justify-content-around mt-4">
+              <button id="signup-btn" className="btn flex-grow-1" type="submit" disabled={isSubmitting}>Create Account</button>
+            </div>
           </Form>
         )
       }

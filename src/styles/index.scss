@@ -26,7 +26,7 @@ body {
   background-color:#f7fe00;
 }
 
-#login-btn {
+#login-btn, #signup-btn {
   background-color: black;
   color: white;
   border:none;
@@ -37,4 +37,26 @@ body {
 
 .create-acc {
   font-weight: bold;
+}
+
+#pages-signup {
+  height: 100vh;
+  align-items: center;
+}
+
+#signup-box {
+  height: 580px;
+  width: 450px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#pages-dashboard {
+  height: 100vh;
+}
+
+#workouts {
+  height: 800px;
+  width: 400px;
+  background-color: white;
 }
