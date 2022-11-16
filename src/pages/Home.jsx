@@ -5,7 +5,9 @@ import FormsAuthLogin from '@/forms/auth/Login'
 function PagesHome() {
   return (
     <div id="pages-home" className="row">
-      <div id="login-img-section" className="col" />
+      <div id="login-img-section" className="col p-5">
+        <h1 id="brand">FitLab.</h1>
+      </div>
       <div id="login-form-section" className="col d-flex flex-column justify-content-around p-5 pt-2">
         <div className="">
           <div className="welcome-msg mb-5">

@@ -11,6 +11,11 @@ body {
   overflow: hidden;
 }
 
+#brand {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
 #login-img-section {
   background-image: url('../public/images/home.jpg');
   background-size: cover;
