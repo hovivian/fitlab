@@ -1,1 +1,35 @@
 @import "~bootstrap/scss/bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+body {
+  background-color: #e3e3e3;
+  overflow: hidden;
+}
+
+#login-img-section {
+  background-image: url('../public/images/home.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.welcome-msg span{
+  background-color:#f7fe00;
+}
+
+#login-btn {
+  background-color: black;
+  color: white;
+  border:none;
+  box-sizing: content-box;
+  width: 150px;
+  height: 30px;
+}
+
+.create-acc {
+  font-weight: bold;
+}
