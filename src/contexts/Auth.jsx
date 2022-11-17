@@ -19,7 +19,8 @@ export function AuthProvider({ children }) {
       try {
         const resp = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/api/my/profile'
+          url: 'http://localhost:3000/api/my/profile',
+          withCredentials: true
         })
         draft.data = resp.data.user
       } catch (err) {
@@ -60,7 +61,8 @@ export function AuthProvider({ children }) {
         const resp = await axios({
           method: 'POST',
           url: 'http://localhost:3000/api/auth/login',
-          data
+          data,
+          withCredentials: true
         })
         draft.data = resp.data.user
         navigation('/my/profile')
