@@ -9,7 +9,7 @@ function AuthRoute({ children }) {
 
   if (authenticating) return null
   if (!currentUser) {
-    toast.error('You need to login first!')
+    toast.error('Please login first')
     return <Navigate to="/" />
   }
 

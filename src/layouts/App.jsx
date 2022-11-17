@@ -17,15 +17,16 @@ function App() {
     <>
       { loading ? <Loading /> : <Outlet />}
       <ToastContainer
-        position="bottom-left"
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
-        newestOnTop
+        newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        theme="light"
       />
     </>
   )

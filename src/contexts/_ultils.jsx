@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify'
 
 export const renderErrors = (err) => {
-  // Console Log for debugging purposes
   console.log(err.response) // eslint-disable-line
 
   switch (err.response.status) {
