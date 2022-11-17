@@ -22,7 +22,7 @@ body {
   height: 100vh;
 }
 
-.welcome-msg span{
+span{
   background-color:#f7fe00;
 }
 
@@ -35,7 +35,7 @@ body {
   height: 30px;
 }
 
-.create-acc {
+.create-acc, .back-homepage {
   font-weight: bold;
 }
 
@@ -59,4 +59,8 @@ body {
   height: 800px;
   width: 400px;
   background-color: white;
+}
+
+#not-found {
+  font-size: 120px;
 }

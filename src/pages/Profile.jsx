@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function PagesDashboard() {
+function PagesProfile() {
   return (
     <div id="pages-dashboard" className="row">
       <div className="dashboard-left col d-flex">
@@ -23,4 +23,4 @@ function PagesDashboard() {
   )
 }
 
-export default PagesDashboard
+export default PagesProfile
