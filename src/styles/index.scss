@@ -114,10 +114,14 @@ margin-left:30px;
     font-size: 12px;
 }
 
-#add-workout-btn, #edit-profile-btn {
+#add-workout-btn {
   margin-right: 10px;
 }
 
 .height:first-child {
   margin-right: 30px;
+}
+
+#logout-btn {
+  font-weight: bolder;
 }

@@ -1,6 +1,13 @@
 import React from 'react'
+import Nav from 'react-bootstrap/Nav'
+
+import { useAuth } from '@/contexts/Auth'
+import ModalsWeightsNew from '@/modals/weight/New'
+// import ModalsProfileEdit from '@/modals/profile/Edit'
 
 function PagesProfile() {
+  const { show: { data: currentUser }, logout } = useAuth()
+
   return (
     <div id="pages-dashboard" className="row m-5">
       <div className="dashboard-left col d-flex flex-column">
@@ -9,7 +16,6 @@ function PagesProfile() {
             <h2>Profile</h2>
             <div className="profile-btn">
               <button id="edit-profile-btn">Edit Profile</button>
-              <button>Logout</button>
             </div>
           </div>
           <div className="d-flex  mb-3">
@@ -29,6 +35,7 @@ function PagesProfile() {
                   <p>80kg</p>
                 </div>
               </div>
+              <Nav.Link onClick={logout} id="logout-btn">Logout</Nav.Link>
             </div>
 
             <div className="stats d-flex flex-column flex-fill">
