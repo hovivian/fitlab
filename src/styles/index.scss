@@ -53,16 +53,71 @@ span{
   border-radius: 10px;
 }
 
-#pages-dashboard {
-  height: 100vh;
+#not-found {
+  font-size: 120px;
+}
+
+// #pages-dashboard {
+// height:70vh;
+// }
+
+#profile-box {
+  background-color: white;
+  width: 30%;
+  height: 100%;
+}
+
+.profile-img {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+}
+
+.user-info {
+  font-size: 14px;
+}
+
+.measurements h3 {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.stats {
+margin-left:30px;
+}
+
+#bmi-box, #weight-goal-box {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+#weights-box {
+  background-color: white;
+  height:100%;
+  width: 100%;
 }
 
 #workouts {
-  height: 800px;
-  width: 400px;
   background-color: white;
+  height:100%;
+  width: 100%;
 }
 
-#not-found {
-  font-size: 120px;
+.top button, .bottom button, .workout-btn button {
+    background-color: black;
+    color: white;
+    border:none;
+    width: 120px;
+    height: 35px;
+    font-size: 12px;
+}
+
+#add-workout-btn, #edit-profile-btn {
+  margin-right: 10px;
+}
+
+.height:first-child {
+  margin-right: 30px;
 }

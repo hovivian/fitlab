@@ -18,9 +18,9 @@ function Routing() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<PagesHome />} />
+            <Route index element={<NoAuthRoute><PagesHome /></NoAuthRoute>} />
             <Route path="/signup" element={<NoAuthRoute><PagesSignup /></NoAuthRoute>} />
-            <Route path="/my/profile" element={<AuthRoute><PagesProfile /></AuthRoute>} />
+            <Route path="/my/profile" element={<PagesProfile />} />
             <Route path="*" element={<PagesNotFound />} />
           </Route>
         </Routes>
