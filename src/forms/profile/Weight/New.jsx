@@ -20,12 +20,12 @@ function FormsWeightNew(props) {
         ({ errors, touched, isSubmitting }) => (
           <Form>
             <div className="mb-3">
-              <label>Weight</label>
+              <label>Weight (kg)</label>
               <Field className={`form-control ${errors?.weight && touched?.weight && 'is-invalid'}`} name="weight" placeholder="" />
               <ErrorMessage className="invalid-feedback" name="weight" component="div" />
             </div>
 
-            <button className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
+            <button id="new-weight-btn" className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
           </Form>
         )
       }

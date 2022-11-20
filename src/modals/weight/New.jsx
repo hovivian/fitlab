@@ -1,19 +1,16 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 
-import FormsWeightNew from '@/forms/profile/weight/New'
-import { useWeights } from '@/contexts/Profile'
+import FormsWeightNew from '@/forms/profile/Weight/New'
+import { useProfile } from '@/contexts/Profile'
 
-function ModalsWeightsNew() {
-  const {
-    apis: { createWeight },
-    modals: { newModal, closeNewModal }
-  } = useWeights()
-
-  if (!newModal) return null
+function ModalsWeightsNew({ show, handleClose }) {
+  const { apis: {
+    createWeight
+  } } = useProfile()
 
   return (
-    <Modal show={newModal} onHide={closeNewModal}>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Enter your current weight</Modal.Title>
       </Modal.Header>

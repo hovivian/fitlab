@@ -105,13 +105,14 @@ margin-left:30px;
   width: 100%;
 }
 
-.top button, .bottom button, .workout-btn button {
+.top button, .bottom button, .workout-btn button, #new-weight-btn {
     background-color: black;
     color: white;
     border:none;
     width: 120px;
     height: 35px;
     font-size: 12px;
+    border-radius: 0;
 }
 
 #add-workout-btn {
