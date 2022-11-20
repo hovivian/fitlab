@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
           url: 'http://localhost:3000/api/my/profile',
           withCredentials: true
         })
-        draft.data = resp.data.user
+        draft.data = resp.data
       } catch (err) {
         draft.error = err.response.data
       } finally {
@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
           url: 'http://localhost:3000/api/auth/signup',
           data
         })
-        draft.data = resp.data.user
+        draft.data = resp.data
         navigation('/my/profile')
       } catch (err) {
         renderErrors(err)
@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
           data,
           withCredentials: true
         })
-        draft.data = resp.data.user
+        draft.data = resp.data
         navigation('/my/profile')
       } catch (err) {
         renderErrors(err)
