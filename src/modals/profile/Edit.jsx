@@ -3,42 +3,42 @@ import Modal from 'react-bootstrap/Modal'
 
 import Loading from '@/components/Loading'
 import FormsProfileChange from '@/forms/profile/Change'
-import { useTodos } from '@/contexts/Todos'
+import { useProfile } from '@/contexts/Profile'
 
 function ModalsProfileEdit() {
   const {
-    show: { data: todo, error, loading },
-    apis: { updateTodo },
-    modals: { editModal, closeEditModal }
-  } = useTodos()
+    show: { data: user, error, loading },
+    apis: { updateProfile },
+    modals: { editProfileModal, closeEditProfileModal }
+  } = useProfile()
 
-  if (!editModal) return null
+  if (!editProfileModal) return null
 
   const renderHeader = () => {
     if (loading || error) return null
     return (
       <Modal.Header closeButton>
-        <Modal.Title>Edit Todo {todo.id}</Modal.Title>
+        <Modal.Title>Edit Profile</Modal.Title>
       </Modal.Header>
     )
   }
 
   const renderBody = () => {
-    if (error) return <Modal.Body><h2>Todo Not Found</h2></Modal.Body>
+    // if (error) return <Modal.Body><h2>User Not Found</h2></Modal.Body>
     if (loading) return <Modal.Body><Loading /></Modal.Body>
 
     return (
       <Modal.Body>
         <FormsProfileChange
-          onSubmit={updateTodo}
-          initialValues={todo}
+          onSubmit={updateProfile}
+          initialValues={user}
         />
       </Modal.Body>
     )
   }
 
   return (
-    <Modal show={editModal} onHide={closeEditModal}>
+    <Modal show={editProfileModal} onHide={closeEditProfileModal}>
       {renderHeader()}
       {renderBody()}
     </Modal>

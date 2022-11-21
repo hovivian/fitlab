@@ -1,12 +1,12 @@
 import React from 'react'
-import { Formik, Field, FieldArray, Form, ErrorMessage } from 'formik'
+import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 const initialValues = {
   username: '',
   email: '',
-  height: 0,
-  targetWeight: 0
+  height: '',
+  targetWeight: ''
 }
 
 function FormsProfileChange(props) {
@@ -29,7 +29,7 @@ function FormsProfileChange(props) {
           <Form>
             <div className="mb-3">
               <label>Username</label>
-              <Field className={`form-control ${errors?.title && touched?.title && 'is-invalid'}`} name="username" placeholder="" />
+              <Field className={`form-control ${errors?.username && touched?.username && 'is-invalid'}`} name="username" placeholder="" />
               <ErrorMessage className="invalid-feedback" name="username" component="div" />
             </div>
 
@@ -40,17 +40,17 @@ function FormsProfileChange(props) {
             </div>
 
             <div className="mb-3">
-              <label>Height</label>
-              <Field className={`form-control ${errors?.height && touched?.height && 'is-invalid'}`} name="height" placeholder="Height (cm)" />
+              <label>Height (cm)</label>
+              <Field className={`form-control ${errors?.height && touched?.height && 'is-invalid'}`} name="height" placeholder="" />
               <ErrorMessage className="invalid-feedback" name="height" component="div" />
             </div>
 
             <div className="mb-3">
-              <label>Target Weight</label>
-              <Field className={`form-control ${errors?.targetWeight && touched?.targetWeight && 'is-invalid'}`} name="target-weight" placeholder="Target Weight(kg)" />
-              <ErrorMessage className="invalid-feedback" name="target-weight" component="div" />
+              <label>Target Weight (kg)</label>
+              <Field className={`form-control ${errors?.targetWeight && touched?.targetWeight && 'is-invalid'}`} name="targetWeight" placeholder="" />
+              <ErrorMessage className="invalid-feedback" name="targetWeight" component="div" />
             </div>
-            <button className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
+            <button id="edit-profile-btn" className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
           </Form>
         )
       }

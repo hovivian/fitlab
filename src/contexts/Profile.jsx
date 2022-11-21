@@ -5,24 +5,60 @@ import { toast } from 'react-toastify'
 
 const ProfileContext = createContext()
 
+const initialShow = { data: null, error: null, loading: true, authenticating: false, unAuthenticating: false }
+
 export function ProfileProvider({ children }) {
   // States
+  const [showState, setShowState] = useState(initialShow)
+
+  // Current Selected Profile Id
+  const [userId, setUserId] = useState(null)
 
   // New Weight Modal
   const [newWeightModal, setNewWeightModal] = useState(false)
   const openNewWeightModal = () => setNewWeightModal(true)
   const closeNewWeightModal = () => setNewWeightModal(false)
 
-  // // Edit Profile Modal
-  // const [editModal, setEditModal] = useState(false)
-  // const openEditModal = (profileId) => {
-  //   setShowId(profileId)
-  //   setEditModal(true)
-  // }
-  // const closeEditModal = () => {
-  //   setShowId(null)
-  //   setEditModal(false)
-  // }
+  // Edit Profile Modal
+  const [editProfileModal, setEditProfileModal] = useState(false)
+  const openEditProfileModal = (userId) => {
+    setUserId(userId)
+    setEditProfileModal(true)
+  }
+  const closeEditProfileModal = () => {
+    setUserId(null)
+    setEditProfileModal(false)
+  }
+
+  // Show Profile Modal
+  const [showProfileModal, setShowProfileModal] = useState(false)
+  const openShowProfileModal = (userId) => {
+    setUserId(userId)
+    setShowProfileModal(true)
+  }
+  const closeShowProfileModal = () => {
+    setUserId(null)
+    setShowProfileModal(false)
+  }
+
+  // Get Profile
+  const getMyProfile = async (updateInBackground) => {
+    if (!updateInBackground) setShowState(initialShow)
+    setShowState(await produce(updateInBackground ? showState : initialShow, async (draft) => {
+      try {
+        const resp = await axios({
+          method: 'GET',
+          url: 'http://localhost:3000/api/my/profile',
+          withCredentials: true
+        })
+        draft.data = resp.data
+      } catch (err) {
+        draft.error = err.response.data
+      } finally {
+        draft.loading = false
+      }
+    }))
+  }
 
   // Create Weight
   const createWeight = async (data) => {
@@ -39,34 +75,47 @@ export function ProfileProvider({ children }) {
     }
   }
 
-  // // Update Profile
-  // const updateProfile = async (data) => {
-  //   try {
-  //     const resp = await axios({
-  //       method: 'PUT',
-  //       url: `http://localhost:3000/api/my/profile/${data.id}`,
-  //       data
-  //     })
-  //     closeEditModal()
-  //     openShowModal(resp.data.todo.id)
-  //     setIndexState(produce(indexState, (draft) => {
-  //       const index = draft.data.findIndex((profile) => profile.id === resp.data.user.id)
-  //       if (index !== -1) draft.data[index] = resp.data.user
-  //     }))
-  //   } catch (err) {
-  //     console.log(err) // eslint-disable-line
-  //   }
-  // }
+  // Update Profile
+  const updateProfile = async (data) => {
+    try {
+      const resp = await axios({
+        method: 'PUT',
+        url: 'http://localhost:3000/api/my/profile',
+        data
+      })
+      closeEditProfileModal()
+      toast.success('Profile updated!')
+    } catch (err) {
+      console.log(err) // eslint-disable-line
+    }
+  }
+
+  // Get profile on showId change
+  useEffect(() => {
+    if (userId) {
+      getMyProfile(userId)
+    }
+  }, [userId])
 
   // Data Available On Context
   const contextData = {
+    show: showState,
+    userId,
     apis: {
-      createWeight
+      createWeight,
+      updateProfile
     },
     modals: {
+      getMyProfile,
       newWeightModal,
       openNewWeightModal,
-      closeNewWeightModal
+      closeNewWeightModal,
+      editProfileModal,
+      openEditProfileModal,
+      closeEditProfileModal,
+      showProfileModal,
+      openShowProfileModal,
+      closeShowProfileModal
     }
   }
 
