@@ -6,7 +6,8 @@ import { useAuth } from '@/contexts/Auth'
 import { useProfile } from '@/contexts/Profile'
 import ModalsWeightsNew from '@/modals/weight/New'
 import ModalsProfileEdit from '@/modals/profile/Edit'
-import { data } from 'autoprefixer'
+
+import WeightChart from '@/components/WeightChart'
 
 function PagesProfile() {
   const { show: { data: currentUser }, logout } = useAuth()
@@ -94,7 +95,9 @@ function PagesProfile() {
               </button>
 
             </div>
-            <div id="weights-box" />
+            <div id="weights-box">
+              <WeightChart />
+            </div>
           </div>
         </div>
 
