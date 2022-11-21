@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 
 import { useAuth } from '@/contexts/Auth'
@@ -6,18 +6,32 @@ import { useAuth } from '@/contexts/Auth'
 import { useProfile } from '@/contexts/Profile'
 import ModalsWeightsNew from '@/modals/weight/New'
 import ModalsProfileEdit from '@/modals/profile/Edit'
+import { data } from 'autoprefixer'
 
 function PagesProfile() {
   const { show: { data: currentUser }, logout } = useAuth()
 
-  const { modals: {
-    editWeightModal,
-    openEditProfileModal,
-    closeEditProfileModal,
-    newWeightModal,
-    openNewWeightModal,
-    closeNewWeightModal
-  } } = useProfile()
+  const {
+    index: { data: weight },
+    apis: { getMyWeights },
+    modals: {
+      editWeightModal,
+      openEditProfileModal,
+      closeEditProfileModal,
+      newWeightModal,
+      openNewWeightModal,
+      closeNewWeightModal
+    } } = useProfile()
+
+  useEffect(() => {
+    getMyWeights()
+  }, [])
+
+  const currentWeight = weight.map((data, i, arr) => {
+    if (arr.length - 1 === i) {
+      return (data.weight)
+    }
+  })
 
   return (
     <>
@@ -58,11 +72,11 @@ function PagesProfile() {
 
               <div className="stats d-flex flex-column flex-fill">
                 <div id="bmi-box" className="d-flex flex-column align-items-center justify-content-center">
-                  <h2>{currentUser.weight / (currentUser.height ** 2)}</h2>
+                  <h2>{Math.floor(currentWeight[currentWeight.length - 1] / ((currentUser.height / 100) ** 2))}</h2>
                   <p>your current BMI</p>
                 </div>
                 <div id="weight-goal-box" className="d-flex flex-column align-items-center justify-content-center mt-3">
-                  <h2>{currentUser.targetWeight - currentUser.weight}KG</h2>
+                  <h2>{currentWeight[currentWeight.length - 1] - currentUser.targetWeight } kg</h2>
                   <p>till your target weight</p>
                 </div>
               </div>
@@ -89,8 +103,8 @@ function PagesProfile() {
             <div className="d-flex justify-content-between">
               <h2>Workout Routine</h2>
               <div className="workout-btn">
-                <button id="add-workout-btn">Add Workout</button>
-                <button>Edit Workout</button>
+                <button id="add-workout-btn" type="button">Add Workout</button>
+                <button type="button">Edit Workout</button>
               </div>
             </div>
             <div id="workouts">

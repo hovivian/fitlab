@@ -5,10 +5,12 @@ import { toast } from 'react-toastify'
 
 const ProfileContext = createContext()
 
+const initialIndex = { data: [], error: null, loading: true }
 const initialShow = { data: null, error: null, loading: true, authenticating: false, unAuthenticating: false }
 
 export function ProfileProvider({ children }) {
   // States
+  const [indexState, setIndexState] = useState({ data: [], error: null, loading: true })
   const [showState, setShowState] = useState(initialShow)
 
   // Current Selected Profile Id
@@ -60,6 +62,24 @@ export function ProfileProvider({ children }) {
     }))
   }
 
+  // Get Weight
+  const getMyWeights = async (isRefresh) => {
+    if (!isRefresh) setIndexState(initialIndex)
+    setIndexState(await produce(initialIndex, async (draft) => {
+      try {
+        const resp = await axios({
+          method: 'GET',
+          url: 'http://localhost:3000/api/my/weight'
+        })
+        draft.data = resp.data
+      } catch (err) {
+        draft.error = err.response.data
+      } finally {
+        draft.loading = false
+      }
+    }))
+  }
+
   // Create Weight
   const createWeight = async (data) => {
     try {
@@ -70,6 +90,7 @@ export function ProfileProvider({ children }) {
       })
       closeNewWeightModal()
       toast.success('Weight added!')
+      window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
     }
@@ -78,13 +99,14 @@ export function ProfileProvider({ children }) {
   // Update Profile
   const updateProfile = async (data) => {
     try {
-      const resp = await axios({
+      await axios({
         method: 'PUT',
         url: 'http://localhost:3000/api/my/profile',
         data
       })
       closeEditProfileModal()
       toast.success('Profile updated!')
+      window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
     }
@@ -99,14 +121,16 @@ export function ProfileProvider({ children }) {
 
   // Data Available On Context
   const contextData = {
+    index: indexState,
     show: showState,
     userId,
     apis: {
       createWeight,
-      updateProfile
+      updateProfile,
+      getMyProfile,
+      getMyWeights
     },
     modals: {
-      getMyProfile,
       newWeightModal,
       openNewWeightModal,
       closeNewWeightModal,
