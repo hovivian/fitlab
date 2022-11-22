@@ -127,31 +127,43 @@ function PagesProfile() {
             <div id="workouts" className="d-flex flex-wrap justify-content-between">
               <div className="day-boxes d-flex flex-column">
                 <div id="mon" className="day-title text-center">Mon</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">
+                  <div className="exercise d-flex justify-content-between">
+                    <p className="w-50">Lunge</p>
+                    <p className="w-25">3 reps</p>
+                    <p className="w-25">3 sets</p>
+                  </div>
+
+                  <div className="exercise d-flex justify-content-between">
+                    <p className="w-50">Russian Twist</p>
+                    <p className="w-25">10 reps</p>
+                    <p className="w-25">2 sets</p>
+                  </div>
+                </div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="tue" className="day-title text-center">Tue</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="wed" className="day-title text-center">Wed</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="thur" className="day-title text-center">Thur</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="fri" className="day-title text-center">Fri</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="sat" className="day-title text-center">Sat</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="sun" className="day-title text-center">Sun</div>
-                <div className="day-box">exercise</div>
+                <div className="day-box p-2">Rest Day</div>
               </div>
             </div>
           </div>
