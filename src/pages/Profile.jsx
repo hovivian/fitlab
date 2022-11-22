@@ -36,7 +36,7 @@ function PagesProfile() {
 
   return (
     <>
-      <div id="pages-dashboard" className="row m-5">
+      <div id="pages-dashboard" className="row m-3">
         <div className="dashboard-left col d-flex flex-column">
           <div className="top d-flex flex-column">
             <div className="d-flex justify-content-between">

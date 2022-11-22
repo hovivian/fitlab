@@ -57,9 +57,10 @@ span{
   font-size: 120px;
 }
 
-// #pages-dashboard {
-// height:70vh;
-// }
+#pages-dashboard {
+height:70vh;
+padding: 5px;
+}
 
 #profile-box {
   background-color: white;
@@ -95,8 +96,10 @@ margin-left:30px;
 
 #weights-box {
   background-color: white;
-  height:100%;
+  height:93%;
   width: 100%;
+  padding-top: 40px;
+  padding-right: 30px;
 }
 
 #workouts {
