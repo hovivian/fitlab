@@ -40,7 +40,7 @@ function PagesProfile() {
         <div className="dashboard-left col d-flex flex-column">
           <div className="top d-flex flex-column">
             <div className="d-flex justify-content-between">
-              <h2>Profile</h2>
+              <h2><span>Profile</span></h2>
               <div className="profile-btn">
                 <button
                   type="button"
@@ -86,7 +86,7 @@ function PagesProfile() {
 
           <div className="bottom">
             <div className="d-flex justify-content-between">
-              <h2>Weight Tracker</h2>
+              <h2><span>Weight Tracker</span></h2>
               <button
                 type="button"
                 onClick={openNewWeightModal}
@@ -104,7 +104,7 @@ function PagesProfile() {
         <div className="dashboard-right col">
           <div id="workouts-box">
             <div className="d-flex justify-content-between">
-              <h2>Workout Routine</h2>
+              <h2><span>Workout Routine</span></h2>
               <div className="workout-btn">
                 <button id="add-workout-btn" type="button">Add Workout</button>
                 <button type="button">Edit Workout</button>
