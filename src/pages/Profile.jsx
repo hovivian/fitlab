@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 
 import { useAuth } from '@/contexts/Auth'
-
 import { useProfile } from '@/contexts/Profile'
+import { useWorkout } from '@/contexts/Workout'
+
 import ModalsWeightsNew from '@/modals/weight/New'
 import ModalsWorkoutsNew from '@/modals/workout/New'
 import ModalsProfileEdit from '@/modals/profile/Edit'
@@ -22,11 +23,15 @@ function PagesProfile() {
       closeEditProfileModal,
       newWeightModal,
       openNewWeightModal,
-      closeNewWeightModal,
+      closeNewWeightModal
+    } } = useProfile()
+
+  const {
+    modals: {
       newWorkoutModal,
       openNewWorkoutModal,
       closeNewWorkoutModal
-    } } = useProfile()
+    } } = useWorkout()
 
   useEffect(() => {
     getMyWeights()
@@ -119,8 +124,35 @@ function PagesProfile() {
                 <button type="button">Edit Workout</button>
               </div>
             </div>
-            <div id="workouts">
-              mon
+            <div id="workouts" className="d-flex flex-wrap justify-content-between">
+              <div className="day-boxes d-flex flex-column">
+                <div id="mon" className="day-title text-center">Mon</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="tue" className="day-title text-center">Tue</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="wed" className="day-title text-center">Wed</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="thur" className="day-title text-center">Thur</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="fri" className="day-title text-center">Fri</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="sat" className="day-title text-center">Sat</div>
+                <div className="day-box">exercise</div>
+              </div>
+              <div className="day-boxes d-flex flex-column">
+                <div id="sun" className="day-title text-center">Sun</div>
+                <div className="day-box">exercise</div>
+              </div>
             </div>
           </div>
         </div>

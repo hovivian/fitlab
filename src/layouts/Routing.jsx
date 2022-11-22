@@ -3,6 +3,7 @@ import { Routes, BrowserRouter, Route } from 'react-router-dom'
 
 import { AuthProvider } from '@/contexts/Auth'
 import { ProfileProvider } from '@/contexts/Profile'
+import { WorkoutProvider } from '@/contexts/Workout'
 
 import App from '@/layouts/App'
 import AuthRoute from '@/layouts/AuthRoute'
@@ -18,14 +19,16 @@ function Routing() {
     <BrowserRouter>
       <AuthProvider>
         <ProfileProvider>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<NoAuthRoute><PagesHome /></NoAuthRoute>} />
-              <Route path="/signup" element={<NoAuthRoute><PagesSignup /></NoAuthRoute>} />
-              <Route path="/my/profile" element={<AuthRoute><PagesProfile /></AuthRoute>} />
-              <Route path="*" element={<PagesNotFound />} />
-            </Route>
-          </Routes>
+          <WorkoutProvider>
+            <Routes>
+              <Route path="/" element={<App />}>
+                <Route index element={<NoAuthRoute><PagesHome /></NoAuthRoute>} />
+                <Route path="/signup" element={<NoAuthRoute><PagesSignup /></NoAuthRoute>} />
+                <Route path="/my/profile" element={<AuthRoute><PagesProfile /></AuthRoute>} />
+                <Route path="*" element={<PagesNotFound />} />
+              </Route>
+            </Routes>
+          </WorkoutProvider>
         </ProfileProvider>
       </AuthProvider>
     </BrowserRouter>

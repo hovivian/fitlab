@@ -32,23 +32,21 @@ function FormsWorkoutNew(props) {
       {
         ({ errors, touched, isSubmitting }) => (
           <Form>
-            <fieldset className="select-day">
-              <div className="mb-3">
-                <Field name="dayOfWeek" as="select" className={`form-control ${errors?.dayOfWeek && touched?.dayOfWeek && 'is-invalid'}`}>
-                  <option value="" disabled defaultValue>Select day of week</option>
-                  <option value="monday">Monday</option>
-                  <option value="tuesday">Tuesday</option>
-                  <option value="wednesday">Wednesday</option>
-                  <option value="thursday">Thursday</option>
-                  <option value="friday">Friday</option>
-                  <option value="saturday">Saturday</option>
-                  <option value="sunday">Sunday</option>
-                </Field>
-                <ErrorMessage className="invalid-feedback" name="dayOfWeek" component="div" />
-              </div>
-            </fieldset>
+            <div className="mb-3">
+              <Field name="dayOfWeek" as="select" className={`form-control ${errors?.dayOfWeek && touched?.dayOfWeek && 'is-invalid'}`}>
+                <option value="" disabled defaultValue>Select day of week</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+                <option value="saturday">Saturday</option>
+                <option value="sunday">Sunday</option>
+              </Field>
+              <ErrorMessage className="invalid-feedback" name="dayOfWeek" component="div" />
+            </div>
 
-            {(values.dayOfWeek) && (
+            {initialValues.rep.values && (
             <fieldset className="new-workout">
               <div className="mb-3">
                 <label>Exercise</label>
