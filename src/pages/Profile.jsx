@@ -5,6 +5,7 @@ import { useAuth } from '@/contexts/Auth'
 
 import { useProfile } from '@/contexts/Profile'
 import ModalsWeightsNew from '@/modals/weight/New'
+import ModalsWorkoutsNew from '@/modals/workout/New'
 import ModalsProfileEdit from '@/modals/profile/Edit'
 
 import WeightChart from '@/components/WeightChart'
@@ -21,7 +22,10 @@ function PagesProfile() {
       closeEditProfileModal,
       newWeightModal,
       openNewWeightModal,
-      closeNewWeightModal
+      closeNewWeightModal,
+      newWorkoutModal,
+      openNewWorkoutModal,
+      closeNewWorkoutModal
     } } = useProfile()
 
   useEffect(() => {
@@ -106,7 +110,12 @@ function PagesProfile() {
             <div className="d-flex justify-content-between">
               <h2><span>Workout Routine</span></h2>
               <div className="workout-btn">
-                <button id="add-workout-btn" type="button">Add Workout</button>
+                <button
+                  id="add-workout-btn"
+                  type="button"
+                  onClick={openNewWorkoutModal}
+                >
+                  Add Workout</button>
                 <button type="button">Edit Workout</button>
               </div>
             </div>
@@ -118,6 +127,7 @@ function PagesProfile() {
       </div>
       <ModalsProfileEdit show={editWeightModal} handleClose={closeEditProfileModal} />
       <ModalsWeightsNew show={newWeightModal} handleClose={closeNewWeightModal} />
+      <ModalsWorkoutsNew show={newWorkoutModal} handleClose={closeNewWorkoutModal} />
     </>
   )
 }

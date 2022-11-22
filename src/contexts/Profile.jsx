@@ -21,6 +21,11 @@ export function ProfileProvider({ children }) {
   const openNewWeightModal = () => setNewWeightModal(true)
   const closeNewWeightModal = () => setNewWeightModal(false)
 
+  // New Workout Modal
+  const [newWorkoutModal, setNewWorkoutModal] = useState(false)
+  const openNewWorkoutModal = () => setNewWorkoutModal(true)
+  const closeNewWorkoutModal = () => setNewWorkoutModal(false)
+
   // Edit Profile Modal
   const [editProfileModal, setEditProfileModal] = useState(false)
   const openEditProfileModal = (userId) => {
@@ -96,6 +101,22 @@ export function ProfileProvider({ children }) {
     }
   }
 
+  // Create Workout
+  const createWorkout = async (data) => {
+    try {
+      await axios({
+        method: 'POST',
+        url: 'http://localhost:3000/api/my/workout',
+        data
+      })
+      closeNewWorkoutModal()
+      toast.success('Workout added!')
+      window.location.reload()
+    } catch (err) {
+        console.log(err) // eslint-disable-line
+    }
+  }
+
   // Update Profile
   const updateProfile = async (data) => {
     try {
@@ -128,7 +149,8 @@ export function ProfileProvider({ children }) {
       createWeight,
       updateProfile,
       getMyProfile,
-      getMyWeights
+      getMyWeights,
+      createWorkout
     },
     modals: {
       newWeightModal,
@@ -139,7 +161,10 @@ export function ProfileProvider({ children }) {
       closeEditProfileModal,
       showProfileModal,
       openShowProfileModal,
-      closeShowProfileModal
+      closeShowProfileModal,
+      newWorkoutModal,
+      openNewWorkoutModal,
+      closeNewWorkoutModal
     }
   }
 
