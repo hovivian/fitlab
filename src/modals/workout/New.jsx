@@ -2,12 +2,12 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 
 import FormsWorkoutNew from '@/forms/profile/Workout/New'
-import { useProfile } from '@/contexts/Profile'
+import { useWorkout } from '@/contexts/Workout'
 
 function ModalsWorkoutsNew({ show, handleClose }) {
   const { apis: {
     createWorkout
-  } } = useProfile()
+  } } = useWorkout()
 
   return (
     <Modal show={show} onHide={handleClose}>

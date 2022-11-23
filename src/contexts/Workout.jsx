@@ -51,15 +51,34 @@ export function WorkoutProvider({ children }) {
       toast.success('Workout added!')
       window.location.reload()
     } catch (err) {
-        console.log(err) // eslint-disable-line
+      console.log(err) // eslint-disable-line
     }
+  }
+
+  // Get Workouts
+  const getWorkout = async (isRefresh) => {
+    if (!isRefresh) setIndexState(initialIndex)
+    setIndexState(await produce(initialIndex, async (draft) => {
+      try {
+        const resp = await axios({
+          method: 'GET',
+          url: 'http://localhost:3000/api/my/workout'
+        })
+        draft.data = resp.data
+      } catch (err) {
+        draft.error = err.response.data
+      } finally {
+        draft.loading = false
+      }
+    }))
   }
 
   // Data Available On Context
   const contextData = {
     index: indexState,
     apis: {
-      createWorkout
+      createWorkout,
+      getWorkout
     },
     modals: {
       openNewWorkoutModal,
