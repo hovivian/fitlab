@@ -18,10 +18,7 @@ function FormsWorkoutNew(props) {
       enableReinitialize
       validationSchema={
         Yup.object({
-          exercise: Yup.object({
-            identifierId: Yup.string().required(),
-            title: Yup.string().required()
-          }),
+          exercise: Yup.string().required(),
           dayOfWeek: Yup.string().required(),
           rep: Yup.number(),
           set: Yup.number(),
@@ -46,7 +43,7 @@ function FormsWorkoutNew(props) {
               <ErrorMessage className="invalid-feedback" name="dayOfWeek" component="div" />
             </div>
 
-            {initialValues.rep.values && (
+            {initialValues.dayOfWeek.values && (
             <fieldset className="new-workout">
               <div className="mb-3">
                 <label>Exercise</label>
