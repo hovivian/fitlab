@@ -63,6 +63,11 @@ function FormsWorkoutNew(props) {
                 <ErrorMessage className="invalid-feedback" name="set" component="div" />
               </div>
 
+              <label>
+                <Field type="checkbox" name="restDay" />
+                {`${values.toggle}`}
+              </label>
+
               <button id="new-workout-btn" className="btn btn-primary float-end" type="submit" disabled={isSubmitting}>Submit</button>
             </fieldset>
             )}
