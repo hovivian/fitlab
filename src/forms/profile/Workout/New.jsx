@@ -17,12 +17,16 @@ function FormsWorkoutNew(props) {
       validationSchema={
         Yup.object({
           dayOfWeek: Yup.string().required(),
-          exercise: Yup.array().of(Yup.object({
-            name: Yup.string().required().label('exercise'),
-            rep: Yup.number().required().label('rep'),
-            set: Yup.number().required().label('set')
-          })),
-          restDay: Yup.boolean().required()
+          exercise: Yup.array().when('restDay', {
+            is: true,
+            then: (schema) => schema.max(0),
+            otherwise: (schema) => schema.of(Yup.object({
+              name: Yup.string().required().label('exercise'),
+              rep: Yup.number().required().label('rep'),
+              set: Yup.number().required().label('set')
+            }))
+          }),
+          restDay: Yup.boolean()
         })
       }
     >
@@ -48,21 +52,33 @@ function FormsWorkoutNew(props) {
                 ({ remove, push }) => (
                   <div className="mb-3">
                     {
-                      values.exercise.map((i) => (
+                      values.exercise.map((item, i) => (
                         <div key={i} className={`${values?.exercise?.length > 1 && values?.exercise?.length !== i + 1}`}>
                           <div className="exercise-row d-flex">
                             <div className="w-50 mt-2">
-                              <Field className={`form-control ${errors?.exercise?.[i]?.name && touched?.exercise?.[i]?.name && 'is-invalid'}`} name={`exercise[${i}].name`} placeholder="exercise" />
+                              <Field
+                                className={`form-control ${errors?.exercise?.[i]?.name && touched?.exercise?.[i]?.name && 'is-invalid'}`}
+                                name={`exercise[${i}].name`}
+                                placeholder="exercise"
+                              />
                               <ErrorMessage className="invalid-feedback" name={`exercise[${i}].name`} component="div" />
                             </div>
 
                             <div className="w-25 mt-2 new-workout-rep">
-                              <Field className={`form-control ${errors?.exercise?.[i]?.rep && touched?.exercise?.[i]?.rep && 'is-invalid'}`} name={`exercise[${i}].rep`} placeholder="Rep" />
+                              <Field
+                                className={`form-control ${errors?.exercise?.[i]?.rep && touched?.exercise?.[i]?.rep && 'is-invalid'}`}
+                                name={`exercise[${i}].rep`}
+                                placeholder="Rep"
+                              />
                               <ErrorMessage className="invalid-feedback" name={`exercise[${i}].rep`} component="div" />
                             </div>
 
                             <div className="w-25 mt-2">
-                              <Field className={`form-control ${errors?.exercise?.[i]?.set && touched?.exercise?.[i]?.set && 'is-invalid'}`} name={`exercise[${i}].set`} placeholder="Set" />
+                              <Field
+                                className={`form-control ${errors?.exercise?.[i]?.set && touched?.exercise?.[i]?.set && 'is-invalid'}`}
+                                name={`exercise[${i}].set`}
+                                placeholder="Set"
+                              />
                               <ErrorMessage className="invalid-feedback" name={`exercise[${i}].set`} component="div" />
                             </div>
 

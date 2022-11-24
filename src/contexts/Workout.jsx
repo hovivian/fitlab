@@ -11,10 +11,24 @@ export function WorkoutProvider({ children }) {
   // States
   const [indexState, setIndexState] = useState({ data: [], error: null, loading: true })
 
+  // Current Selected Workout Id
+  const [workoutId, setWorkoutId] = useState(null)
+
   // New Workout Modal
   const [newWorkoutModal, setNewWorkoutModal] = useState(false)
   const openNewWorkoutModal = () => setNewWorkoutModal(true)
   const closeNewWorkoutModal = () => setNewWorkoutModal(false)
+
+  // Edit Workout Modal
+  const [editWorkoutModal, setEditWorkoutModal] = useState(false)
+  const openEditWorkoutModal = (workoutId) => {
+    setWorkoutId(workoutId)
+    setEditWorkoutModal(true)
+  }
+  const closeEditWorkoutModal = () => {
+    setWorkoutId(null)
+    setEditWorkoutModal(false)
+  }
 
   // Get exercise
   // const getExercise = async (isRefresh) => {
@@ -49,9 +63,25 @@ export function WorkoutProvider({ children }) {
       })
       closeNewWorkoutModal()
       toast.success('Workout added!')
-      window.location.reload()
+      // window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
+    }
+  }
+
+  // Update Workout
+  const updateWorkout = async (data) => {
+    try {
+      await axios({
+        method: 'PUT',
+        url: 'http://localhost:3000/api/my/workout',
+        data
+      })
+      closeEditWorkoutModal()
+      toast.success('Workout updated!')
+      window.location.reload()
+    } catch (err) {
+        console.log(err) // eslint-disable-line
     }
   }
 
@@ -78,12 +108,16 @@ export function WorkoutProvider({ children }) {
     index: indexState,
     apis: {
       createWorkout,
-      getWorkout
+      getWorkout,
+      updateWorkout
     },
     modals: {
       openNewWorkoutModal,
       closeNewWorkoutModal,
-      newWorkoutModal
+      newWorkoutModal,
+      editWorkoutModal,
+      openEditWorkoutModal,
+      closeEditWorkoutModal
     }
   }
 

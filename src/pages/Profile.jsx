@@ -7,9 +7,17 @@ import { useWorkout } from '@/contexts/Workout'
 
 import ModalsWeightsNew from '@/modals/weight/New'
 import ModalsWorkoutsNew from '@/modals/workout/New'
+import ModalsWorkoutsEdit from '@/modals/workout/Edit'
 import ModalsProfileEdit from '@/modals/profile/Edit'
 
 import WeightChart from '@/components/WeightChart'
+import MonWorkout from '@/components/MonWorkout'
+import TueWorkout from '@/components/TueWorkout'
+import WedWorkout from '@/components/WedWorkout'
+import ThurWorkout from '@/components/ThurWorkout'
+import FriWorkout from '@/components/FriWorkout'
+import SatWorkout from '@/components/SatWorkout'
+import SunWorkout from '@/components/SunWorkout'
 
 function PagesProfile() {
   const { show: { data: currentUser }, logout } = useAuth()
@@ -30,7 +38,10 @@ function PagesProfile() {
     modals: {
       newWorkoutModal,
       openNewWorkoutModal,
-      closeNewWorkoutModal
+      closeNewWorkoutModal,
+      editWorkoutModal,
+      openEditWorkoutModal,
+      closeEditWorkoutModal
     } } = useWorkout()
 
   useEffect(() => {
@@ -121,49 +132,40 @@ function PagesProfile() {
                   onClick={openNewWorkoutModal}
                 >
                   Add Workout</button>
-                <button type="button">Edit Workout</button>
+                <button
+                  type="button"
+                  onClick={openEditWorkoutModal}
+                >Edit Workout</button>
               </div>
             </div>
             <div id="workouts" className="d-flex flex-wrap justify-content-between">
               <div className="day-boxes d-flex flex-column">
                 <div id="mon" className="day-title text-center">Mon</div>
-                <div className="day-box p-3">
-                  <div className="exercise d-flex justify-content-between">
-                    <p className="w-50">Lunge</p>
-                    <p className="w-25 text-end">3 reps</p>
-                    <p className="w-25 text-end">3 sets</p>
-                  </div>
-
-                  <div className="exercise d-flex justify-content-between">
-                    <p className="w-50">Russian Twist</p>
-                    <p className="w-25 text-end">10 reps</p>
-                    <p className="w-25 text-end">2 sets</p>
-                  </div>
-                </div>
+                <div className="day-box p-3"><MonWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="tue" className="day-title text-center">Tue</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><TueWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="wed" className="day-title text-center">Wed</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><WedWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="thur" className="day-title text-center">Thur</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><ThurWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="fri" className="day-title text-center">Fri</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><FriWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="sat" className="day-title text-center">Sat</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><SatWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="sun" className="day-title text-center">Sun</div>
-                <div className="day-box p-3">Rest Day</div>
+                <div className="day-box p-3"><SunWorkout /></div>
               </div>
             </div>
           </div>
@@ -172,6 +174,7 @@ function PagesProfile() {
       <ModalsProfileEdit show={editWeightModal} handleClose={closeEditProfileModal} />
       <ModalsWeightsNew show={newWeightModal} handleClose={closeNewWeightModal} />
       <ModalsWorkoutsNew show={newWorkoutModal} handleClose={closeNewWorkoutModal} />
+      <ModalsWorkoutsEdit show={editWorkoutModal} handleClose={closeEditWorkoutModal} />
     </>
   )
 }
