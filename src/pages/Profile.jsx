@@ -11,6 +11,8 @@ import ModalsWorkoutsEdit from '@/modals/workout/Edit'
 import ModalsProfileEdit from '@/modals/profile/Edit'
 
 import WeightChart from '@/components/WeightChart'
+import Bmi from '@/components/Bmi'
+import WeightCountDown from '@/components/WeightCountDown'
 import MonWorkout from '@/components/MonWorkout'
 import TueWorkout from '@/components/TueWorkout'
 import WedWorkout from '@/components/WedWorkout'
@@ -23,7 +25,6 @@ function PagesProfile() {
   const { show: { data: currentUser }, logout } = useAuth()
 
   const {
-    index: { data: weight },
     apis: { getMyWeights },
     modals: {
       editWeightModal,
@@ -47,12 +48,6 @@ function PagesProfile() {
   useEffect(() => {
     getMyWeights()
   }, [])
-
-  const currentWeight = weight.map((data, i, arr) => {
-    if (arr.length - 1 === i) {
-      return (data.weight)
-    }
-  })
 
   return (
     <>
@@ -92,13 +87,11 @@ function PagesProfile() {
               </div>
 
               <div className="stats d-flex flex-column flex-fill">
-                <div id="bmi-box" className="d-flex flex-column align-items-center justify-content-center">
-                  <h2>{Math.floor(currentWeight[currentWeight.length - 1] / ((currentUser.height / 100) ** 2))}</h2>
-                  <p>your current BMI</p>
+                <div id="bmi-box" className="d-flex flex-column align-items-center justify-content-center text-center">
+                  <Bmi />
                 </div>
-                <div id="weight-goal-box" className="d-flex flex-column align-items-center justify-content-center mt-3">
-                  <h2>{currentWeight[currentWeight.length - 1] - currentUser.targetWeight } kg</h2>
-                  <p>till your target weight</p>
+                <div id="weight-goal-box" className="d-flex flex-column align-items-center justify-content-center mt-3 text-center">
+                  <WeightCountDown />
                 </div>
               </div>
             </div>
@@ -153,7 +146,7 @@ function PagesProfile() {
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="thur" className="day-title text-center">Thur</div>
-                <div className="day-box p-3"><ThurWorkout /></div>
+                <div className="day-box p-3 "><ThurWorkout /></div>
               </div>
               <div className="day-boxes d-flex flex-column">
                 <div id="fri" className="day-title text-center">Fri</div>

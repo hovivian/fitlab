@@ -98,9 +98,9 @@ function FormsWorkoutNew(props) {
                 )
               }
             </FieldArray>
-
-            <button id="new-workout-btn" className="btn btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
-
+            <div className="text-center">
+              <button id="new-workout-btn" className="btn btn-primary" type="submit" disabled={isSubmitting}>Submit</button>
+            </div>
           </Form>
         )
       }

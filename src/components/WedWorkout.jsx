@@ -12,8 +12,6 @@ function WedWorkout() {
     getWorkout()
   }, [])
 
-  console.log(workout)
-
   const data = workout.filter((obj) => obj.dayOfWeek.includes('WEDNESDAY'))
   const restDayData = data.map((item) => item.restDay)[0]
 
@@ -21,13 +19,13 @@ function WedWorkout() {
     return <p>Rest Day</p>
   }
   return data.map((item) => (
-    <div className="exercise d-flex justify-content-between">
+    <div className="">
       { item.exercise.map((e) => (
-        <>
+        <div className="d-flex">
           <p className="w-50">{e.name}</p>
           <p className="w-25 text-end">{e.rep} reps</p>
           <p className="w-25 text-end">{e.set} sets</p>
-        </>
+        </div>
       )
       ) }
     </div>
