@@ -12,10 +12,13 @@ function FriWorkout() {
     getWorkout()
   }, [])
 
-  if (workout && workout.filter((obj) => obj.dayOfWeek.includes('FRIDAY')).map((item) => item.exercise.length < 0)) {
+  const data = workout.filter((obj) => obj.dayOfWeek.includes('FRIDAY'))
+  const restDayData = data.map((item) => item.restDay)[0]
+
+  if (restDayData === true) {
     return <p>Rest Day</p>
   }
-  return workout.filter((obj) => obj.dayOfWeek.includes('FRIDAY')).map((item) => (
+  return data.map((item) => (
     <div className="exercise d-flex justify-content-between">
       { item.exercise.map((e) => (
         <>

@@ -12,6 +12,8 @@ function WedWorkout() {
     getWorkout()
   }, [])
 
+  console.log(workout)
+
   const data = workout.filter((obj) => obj.dayOfWeek.includes('WEDNESDAY'))
   const restDayData = data.map((item) => item.restDay)[0]
 
