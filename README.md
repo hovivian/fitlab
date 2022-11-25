@@ -1,6 +1,6 @@
 # FITLAB
 - A fitness tracker app
-Click <a href="/">here</a>
+- Click <a href="/">here</a> for demo
 
 ## Main Features
 - Authentication
