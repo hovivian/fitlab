@@ -89,7 +89,7 @@ export function ProfileProvider({ children }) {
         data
       })
       closeNewWeightModal()
-      toast.success('Weight added!')
+      // toast.success('Weight added!')
       window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
@@ -105,8 +105,8 @@ export function ProfileProvider({ children }) {
         data
       })
       closeEditProfileModal()
-      toast.success('Profile updated!')
-      // window.location.reload()
+      // toast.success('Profile updated!')
+      window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
     }
