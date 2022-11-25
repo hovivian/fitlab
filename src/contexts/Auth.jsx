@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
       try {
         const resp = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/api/my/profile',
+          url: `${process.env.API_URL}/api/my/profile`,
           withCredentials: true
         })
         draft.data = resp.data
@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
       try {
         const resp = await axios({
           method: 'POST',
-          url: 'http://localhost:3000/api/auth/signup',
+          url: `${process.env.API_URL}/api/auth/signup`,
           data
         })
         draft.data = resp.data
@@ -60,7 +60,7 @@ export function AuthProvider({ children }) {
       try {
         const resp = await axios({
           method: 'POST',
-          url: 'http://localhost:3000/api/auth/login',
+          url: `${process.env.API_URL}/api/auth/login`,
           data,
           withCredentials: true
         })
@@ -81,7 +81,7 @@ export function AuthProvider({ children }) {
       try {
         await axios({
           method: 'DELETE',
-          url: 'http://localhost:3000/api/auth/logout'
+          url: `${process.env.API_URL}/api/auth/logout`
         })
         draft.data = null
         navigation('/')

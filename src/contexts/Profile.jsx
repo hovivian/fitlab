@@ -50,7 +50,7 @@ export function ProfileProvider({ children }) {
       try {
         const resp = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/api/my/profile',
+          url: `${process.env.API_URL}/api/my/profile`,
           withCredentials: true
         })
         draft.data = resp.data
@@ -69,7 +69,7 @@ export function ProfileProvider({ children }) {
       try {
         const resp = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/api/my/weight'
+          url: `${process.env.API_URL}/api/my/weight`
         })
         draft.data = resp.data
       } catch (err) {
@@ -85,7 +85,7 @@ export function ProfileProvider({ children }) {
     try {
       await axios({
         method: 'POST',
-        url: 'http://localhost:3000/api/my/weight',
+        url: `${process.env.API_URL}/api/my/weight`,
         data
       })
       closeNewWeightModal()
@@ -101,7 +101,7 @@ export function ProfileProvider({ children }) {
     try {
       await axios({
         method: 'PUT',
-        url: 'http://localhost:3000/api/my/profile',
+        url: `${process.env.API_URL}/api/my/profile`,
         data
       })
       closeEditProfileModal()

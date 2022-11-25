@@ -37,7 +37,7 @@ export function WorkoutProvider({ children }) {
     try {
       await axios({
         method: 'POST',
-        url: 'http://localhost:3000/api/my/workout',
+        url: `${process.env.API_URL}/api/my/workout`,
         data
       })
       closeNewWorkoutModal()
@@ -53,7 +53,7 @@ export function WorkoutProvider({ children }) {
     try {
       await axios({
         method: 'PUT',
-        url: 'http://localhost:3000/api/my/workout/${workoutId}',
+        url: `${process.env.API_URL}/api/my/workout/${workoutId}`,
         data
       })
       closeEditWorkoutModal()
@@ -71,7 +71,7 @@ export function WorkoutProvider({ children }) {
       try {
         const resp = await axios({
           method: 'GET',
-          url: 'http://localhost:3000/api/my/workout'
+          url: `${process.env.API_URL}/api/my/workout`
         })
         draft.data = resp.data
       } catch (err) {
