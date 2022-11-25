@@ -106,7 +106,7 @@ export function ProfileProvider({ children }) {
       })
       closeEditProfileModal()
       toast.success('Profile updated!')
-      window.location.reload()
+      // window.location.reload()
     } catch (err) {
       console.log(err) // eslint-disable-line
     }
