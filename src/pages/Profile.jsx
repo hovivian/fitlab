@@ -7,7 +7,7 @@ import { useWorkout } from '@/contexts/Workout'
 
 import ModalsWeightsNew from '@/modals/weight/New'
 import ModalsWorkoutsNew from '@/modals/workout/New'
-import ModalsWorkoutsEdit from '@/modals/workout/Edit'
+// import ModalsWorkoutsEdit from '@/modals/workout/Edit'
 import ModalsProfileEdit from '@/modals/profile/Edit'
 
 import WeightChart from '@/components/WeightChart'
@@ -39,10 +39,10 @@ function PagesProfile() {
     modals: {
       newWorkoutModal,
       openNewWorkoutModal,
-      closeNewWorkoutModal,
-      editWorkoutModal,
-      openEditWorkoutModal,
-      closeEditWorkoutModal
+      closeNewWorkoutModal
+      // editWorkoutModal,
+      // openEditWorkoutModal,
+      // closeEditWorkoutModal
     } } = useWorkout()
 
   useEffect(() => {
@@ -125,10 +125,10 @@ function PagesProfile() {
                   onClick={openNewWorkoutModal}
                 >
                   Add Workout</button>
-                <button
+                {/* <button
                   type="button"
                   onClick={openEditWorkoutModal}
-                >Edit Workout</button>
+                >Edit Workout</button> */}
               </div>
             </div>
             <div id="workouts" className="d-flex flex-wrap justify-content-between">
@@ -167,7 +167,7 @@ function PagesProfile() {
       <ModalsProfileEdit show={editWeightModal} handleClose={closeEditProfileModal} />
       <ModalsWeightsNew show={newWeightModal} handleClose={closeNewWeightModal} />
       <ModalsWorkoutsNew show={newWorkoutModal} handleClose={closeNewWorkoutModal} />
-      <ModalsWorkoutsEdit show={editWorkoutModal} handleClose={closeEditWorkoutModal} />
+      {/* <ModalsWorkoutsEdit show={editWorkoutModal} handleClose={closeEditWorkoutModal} /> */}
     </>
   )
 }
